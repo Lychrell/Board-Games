@@ -2,7 +2,7 @@
 using namespace std;
 
 void resetBoard(char board[6][7]);
-void getPosition(int *col);
+int getPosition();
 int dropPiece(char board[6][7], int col, char piece);
 bool checkForWinner(char board[6][7], char piece, int row, int col);
 void swapPlayer(char *piece);
@@ -18,7 +18,7 @@ int main() {
 	showBoard(board);
 
 	while(true) {
-		getPosition(&col);
+		col = getPosition();
 		row = dropPiece(board, col, currentPiece);
 
 		showBoard(board);
@@ -43,12 +43,16 @@ void resetBoard(char board[6][7]) {
 	}
 }
 
-void getPosition(int *col) {
+void getPosition() {
+	int col;
+
 	cout << "Column: ";
 	cin >> *col;
 
 	*col -= 1;
 	cout << endl;
+
+	return col;
 }
 
 int dropPiece(char board[6][7], int col, char piece) {
