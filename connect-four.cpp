@@ -4,7 +4,7 @@ using namespace std;
 void resetBoard(char board[6][7]);
 int getPosition();
 int dropPiece(char board[6][7], int col, char piece);
-bool checkForWinner(char board[6][7], char piece, int row, int col);
+bool hasWinner(char board[6][7], char piece, int row, int col);
 void swapPlayer(char *piece);
 void showBoard(char board[6][7]);
 void showWinner(char currentPiece);
@@ -24,7 +24,7 @@ int main() {
 
 		showBoard(board);
 
-		if(checkForWinner(board, currentPiece, row, col) == true) {
+		if(hasWinner(board, currentPiece, row, col) == true) {
 			showWinner(currentPiece);
 			break;
 		}
@@ -102,7 +102,7 @@ int checkVertical(char board[6][7], char piece, int row, int col);
 int checkLeftDiagonal(char board[6][7], char piece, int row, int col);
 int checkRightDiagonal(char board[6][7], char piece, int row, int col);
 
-bool checkForWinner(char board[6][7], char piece, int row, int col) {
+bool hasWinner(char board[6][7], char piece, int row, int col) {
 	if(checkHorizontal(board, piece, row, col) >= 4)
 		return true;
 	if(checkVertical(board, piece, row, col) >= 4)
