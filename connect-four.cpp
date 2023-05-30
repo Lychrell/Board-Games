@@ -7,6 +7,7 @@ int dropPiece(char board[6][7], int col, char piece);
 bool checkForWinner(char board[6][7], char piece, int row, int col);
 void swapPlayer(char *piece);
 void showBoard(char board[6][7]);
+void showWinner(char currentPiece);
 
 int main() {
 	char board[6][7];
@@ -23,8 +24,10 @@ int main() {
 
 		showBoard(board);
 
-		if(checkForWinner(board, currentPiece, row, col) == true)
+		if(checkForWinner(board, currentPiece, row, col) == true) {
+			showWinner(currentPiece);
 			break;
+		}
 		swapPlayer(&currentPiece);
 	}
 
@@ -84,6 +87,12 @@ void showBoard(char board[6][7]) {
 	cout << "     1 2 3 4 5 6 7\n\n";
 }
 
+void showWinner(char currentPiece) {
+	if(currentPiece == '+')
+		cout << "Player 1 won."
+	else
+		cout << "Player 2 won."
+}
 
 
 
